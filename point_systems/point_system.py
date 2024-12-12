@@ -1,6 +1,6 @@
-from astrology_data import AstrologyData
-from tide_data import TideData
-from weather_data import WeatherData
+from data.astrology_data import AstrologyData
+from data.tide_data import TideData
+from data.weather_data import WeatherData
 
 
 class PointSystem:
