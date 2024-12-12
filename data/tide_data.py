@@ -1,5 +1,5 @@
 
 class TideData:
-    def __init__(self, water_temp: int, water_condition: str):
+    def __init__(self, water_temp: int, wave_height: float):
         self.water_temp = water_temp
-        self.water_condition = water_condition
+        self.wave_height = wave_height
