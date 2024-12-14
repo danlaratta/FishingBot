@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24faf506-aca7-40ed-ac8f-050975da0301" name="Changes" comment="">
+    <list default="true" id="24faf506-aca7-40ed-ac8f-050975da0301" name="Changes" comment="init commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/tide_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/tide_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/point_systems/point_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/point_systems/point_system.py" afterDir="false" />

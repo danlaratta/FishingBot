@@ -102,17 +102,25 @@ class PointSystem:
             return 1
         return 0
 
-    # TODO: convert string time into datetime and determine number of hours up to and after tide change
-    #
+    # Hours to Tide Change (Moderately Important) – Max 6 points
     def hours_to_tide_change_points(self) -> int:
         pass
 
 
-    #
+    # Moon Phase (Moderately Important) – Max 6 points
     def moon_phase_points(self) -> int:
-        pass
+        if self.astrology.moon_phase.lower() in ["new moon", "full moon"]:
+            return 6
+        elif self.astrology.moon_phase.lower() in ["waxing gibbous", "waning gibbous"]:
+            return 5
+        elif self.astrology.moon_phase.lower() in ["first quarter", "last quarter"]:
+            return 4
+        elif self.astrology.moon_phase.lower() in ["waxing crescent", "waning crescent"]:
+            return 2
+
+        return 1
 
 
-    #
+    # Time of Year (Most Important) – Max 10 points
     def time_of_year_points(self) -> int:
         pass
