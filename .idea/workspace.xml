@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24faf506-aca7-40ed-ac8f-050975da0301" name="Changes" comment="init commit">
+      <change afterPath="$PROJECT_DIR$/api_service/api_service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/astrology_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/astrology_data.py" afterDir="false" />

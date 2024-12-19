@@ -124,8 +124,8 @@ class PointSystem:
 
     # Time of Year (Most Important) – Max 10 points
     def time_of_year_points(self, start_date, end_date) -> int:
-        current_date = datetime.today().strptime("%b %-d")
-
-        match current_date:
+        pass
+        # current_date = datetime.today().strptime("%b %-d")
+        # match current_date:
 
 

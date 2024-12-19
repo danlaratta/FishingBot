@@ -78,7 +78,6 @@ class ApiService:
             print("No tide data available.")
             return None
 
-        tides_data = data["forecast"]["forecastday"][0]["day"]["tides"][0]["tide"]
         high_tide_am = data["forecast"]["forecastday"][0]["day"]["tides"][0]["tide"][0]["tide_time"]
         high_tide_pm = data["forecast"]["forecastday"][0]["day"]["tides"][0]["tide"][2]["tide_time"]
         low_tide_am = data["forecast"]["forecastday"][0]["day"]["tides"][0]["tide"][1]["tide_time"]
@@ -97,6 +96,6 @@ class ApiService:
             }
         ])
 
-        test_date = datetime.fromisoformat("Sep 1")
-        return test_date
+        # test_date = datetime.fromisoformat("Sep 1")
+        return df
 
