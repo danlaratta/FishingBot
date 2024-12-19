@@ -1,6 +1,7 @@
 from data.astrology_data import AstrologyData
 from data.tide_data import TideData
 from data.weather_data import WeatherData
+from datetime import datetime
 
 
 class PointSystem:
@@ -122,5 +123,9 @@ class PointSystem:
 
 
     # Time of Year (Most Important) – Max 10 points
-    def time_of_year_points(self) -> int:
-        pass
+    def time_of_year_points(self, start_date, end_date) -> int:
+        current_date = datetime.today().strptime("%b %-d")
+
+        match current_date:
+
+
