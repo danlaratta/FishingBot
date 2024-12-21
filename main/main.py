@@ -4,6 +4,10 @@ import requests
 from dotenv import load_dotenv
 import pandas as pd
 
+from point_systems.PointCalculator import PointCalculator
+from point_systems.point_system import PointSystem
+
+
 class Main:
     # Load environment variables
     def __init__(self):
@@ -19,9 +23,12 @@ class Main:
         }
 
         # models = api_service.create_hourly_dataframe("forecast.json", params=params)
-        data = api_service.create_non_hourly_dataframe("tides", params=None)
-        print(data)
+        data = api_service.create_non_hourly_dataframe("forecast.json", "tides", params=params)
+        # print(data)
 
+        ps = PointSystem()
+        calculator = PointCalculator()
+        print(calculator.calculate_condition_percentage(ps))
 
 main = Main()
 main.call_api()

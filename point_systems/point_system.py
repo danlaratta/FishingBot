@@ -109,7 +109,9 @@ class PointSystem:
 
     # Hours to Tide Change (Moderately Important) – Max 6 points
     def hours_to_tide_change_points(self) -> int:
+        # current_time = datetime.now().time()
         pass
+
 
 
     # Moon Phase (Moderately Important) – Max 6 points
@@ -128,7 +130,7 @@ class PointSystem:
 
     # Time of Year (Most Important) – Max 10 points
     def time_of_year_points(self) -> int:
-        current_date = datetime.today().strptime("%b %-d")
+        current_date = datetime.today()
 
         for start_date, end_date, points in self.astrology.date_ranges:
             if start_date <= current_date <= end_date:

@@ -95,16 +95,16 @@ class ApiService:
 
 
     # Create Dataframe with non-hourly models and return it
-    def create_non_hourly_dataframe(self, endpoint, params=None):
-        moon_data = self.get_weather_data(endpoint, params)
-        tide_data = self.get_tide_data(endpoint, params)
+    def create_non_hourly_dataframe(self, weather_endpoint, tide_endpoint, params=None):
+        moon_data = self.get_weather_data(weather_endpoint, params)
+        tide_data = self.get_tide_data(tide_endpoint, None)
 
         if not moon_data and not tide_data:
             print("No tide or moon models available.")
             return None
 
         df = pd.DataFrame(tide_data["tides"], columns=["date", "time", "type", "height"])
-        moon_phase = moon_data["forecast"]["forecastday"]["astro"]["moon_phase"]
+        moon_phase = moon_data["forecast"]["forecastday"][0]["astro"]["moon_phase"]
         df["moon_phase"] = moon_phase # add moon phase to dataframe
         return df
 
