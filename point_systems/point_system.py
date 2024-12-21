@@ -1,6 +1,6 @@
-from data.astrology_data import AstrologyData
-from data.tide_data import TideData
-from data.weather_data import WeatherData
+from models.astrology_data import AstrologyData
+from models.tide_data import TideData
+from models.weather_data import WeatherData
 from datetime import datetime
 
 
@@ -55,6 +55,7 @@ class PointSystem:
         return 0
 
 
+    """
     # Water Temperature (Very Important) – Max 8 points
     def water_temp_points(self) -> int:
         if self.tide.water_temp in range(55, 66):
@@ -68,10 +69,11 @@ class PointSystem:
         elif 40 > self.tide.water_temp > 80:
             return 1
         return 0
+    """
 
 
     # General Weather (Moderately Important) – Max 6 points
-    def wave_height_points(self) -> int:
+    def weather_condition_points(self) -> int:
         if self.weather.weather_condition.lower() == "light drizzle":
             return 6
         elif self.weather.weather_condition.lower() in ["overcast", "partly cloudy", "light rain"]:
@@ -87,6 +89,7 @@ class PointSystem:
         return 0
 
 
+    """
     # Wave Height or Water Conditions (Moderately Important) – Max 6 points
     def water_condition_points(self) -> int:
         if 1.0 <= self.tide.wave_height <= 2.0:
@@ -102,6 +105,7 @@ class PointSystem:
         elif self.tide.wave_height < 6.1:
             return 1
         return 0
+    """
 
     # Hours to Tide Change (Moderately Important) – Max 6 points
     def hours_to_tide_change_points(self) -> int:
@@ -123,9 +127,13 @@ class PointSystem:
 
 
     # Time of Year (Most Important) – Max 10 points
-    def time_of_year_points(self, start_date, end_date) -> int:
-        pass
-        # current_date = datetime.today().strptime("%b %-d")
-        # match current_date:
+    def time_of_year_points(self) -> int:
+        current_date = datetime.today().strptime("%b %-d")
+
+        for start_date, end_date, points in self.astrology.date_ranges:
+            if start_date <= current_date <= end_date:
+                return points
+
+        return 0
 
 

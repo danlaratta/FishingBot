@@ -1,7 +1,7 @@
 
 class WeatherData:
     def __init__(self, wind_speed: int, wind_direction: str, air_temp: int, weather_condition: str):
-        # ensures that the class is never instantiated with invalid data for wind_speed
+        # ensures that the class is never instantiated with invalid models for wind_speed
         if wind_speed < 0:
             raise ValueError("Wind speed cannot be below zero.")
 

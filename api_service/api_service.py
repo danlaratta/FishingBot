@@ -35,7 +35,7 @@ class ApiService:
         }
 
 
-    # Get weather data
+    # Get weather models
     def get_weather_data(self, endpoint, params=None):
         url = f"{self.weather_base_url}/{endpoint}"
         headers = self.get_weather_headers()
@@ -50,7 +50,7 @@ class ApiService:
             return None
 
 
-    # get tide data
+    # get tide and moon models
     def get_tide_data(self, endpoint, params=None):
         url = f"{self.tide_base_url}/stations/{self.station_id}/{endpoint}"
         headers = self.get_tide_headers()
@@ -65,16 +65,16 @@ class ApiService:
             return None
 
 
-    # Create Dataframe with hourly data and return it
+    # Create Dataframe with hourly models and return it
     def create_hourly_dataframe(self, endpoint, params=None):
-        # Get the api data
+        # Get the api models
         data = self.get_weather_data(endpoint, params)
 
         if not data:
-            print("No data available to create DataFrame.")
+            print("No models available to create DataFrame.")
             return None
 
-        # Extract hourly data
+        # Extract hourly models
         hourly_data = data["forecast"]["forecastday"][0]["hour"]
 
         # Create dataframe using list comprehension
@@ -94,14 +94,17 @@ class ApiService:
         return df
 
 
-    # Create Dataframe with non-hourly data and return it
+    # Create Dataframe with non-hourly models and return it
     def create_non_hourly_dataframe(self, endpoint, params=None):
-        data = self.get_tide_data(endpoint, params)
+        moon_data = self.get_weather_data(endpoint, params)
+        tide_data = self.get_tide_data(endpoint, params)
 
-        if not data:
-            print("No tide data available.")
+        if not moon_data and not tide_data:
+            print("No tide or moon models available.")
             return None
 
-        df = pd.DataFrame(data["tides"], columns=["date", "time", "type", "height"])
+        df = pd.DataFrame(tide_data["tides"], columns=["date", "time", "type", "height"])
+        moon_phase = moon_data["forecast"]["forecastday"]["astro"]["moon_phase"]
+        df["moon_phase"] = moon_phase # add moon phase to dataframe
         return df
 

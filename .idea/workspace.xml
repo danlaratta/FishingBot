@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24faf506-aca7-40ed-ac8f-050975da0301" name="Changes" comment="init commit">
+      <change afterPath="$PROJECT_DIR$/models/astrology_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api_service/api_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_service/api_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/astrology_data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/tide_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/tide_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/weather_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/weather_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/point_systems/point_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/point_systems/point_system.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +63,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/daniellaratta/Development/Projects/Python/FishingBot",
-    "settings.editor.selected.configurable": "Errors"
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RecentsManager">
