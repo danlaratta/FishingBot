@@ -1,4 +1,3 @@
-from datetime import datetime
 
 class TideData:
     def __init__(self, high_tide_time_am, high_tide_time_pm, low_tide_time_am, low_tide_time_pm):

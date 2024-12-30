@@ -22,13 +22,13 @@ class Main:
             "q": "08735"
         }
 
-        # models = api_service.create_hourly_dataframe("forecast.json", params=params)
+        # data = api_service.create_hourly_dataframe("forecast.json", params=params)
         data = api_service.create_non_hourly_dataframe("forecast.json", "tides", params=params)
-        # print(data)
+        print(data)
 
-        ps = PointSystem()
-        calculator = PointCalculator()
-        print(calculator.calculate_condition_percentage(ps))
+        # ps = PointSystem()
+        # calculator = PointCalculator()
+        # print(calculator.calculate_condition_percentage(ps))
 
 main = Main()
 main.call_api()
