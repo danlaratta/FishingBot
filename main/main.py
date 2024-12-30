@@ -1,11 +1,9 @@
-from api_service.api_service import ApiService
 import os
 import requests
 from dotenv import load_dotenv
 import pandas as pd
 
-from point_systems.PointCalculator import PointCalculator
-from point_systems.point_system import PointSystem
+from FishingBot.api_service.api_service import ApiService
 
 
 class Main:
@@ -22,8 +20,8 @@ class Main:
             "q": "08735"
         }
 
-        # data = api_service.create_hourly_dataframe("forecast.json", params=params)
-        data = api_service.create_non_hourly_dataframe("forecast.json", "tides", params=params)
+        data = api_service.create_hourly_dataframe("forecast.json", params=params)
+        # data = api_service.create_non_hourly_dataframe("forecast.json", "tides", params=params)
         print(data)
 
         # ps = PointSystem()

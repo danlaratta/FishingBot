@@ -1,4 +1,4 @@
-from point_systems.point_system import PointSystem
+from FishingBot.point_systems.point_system import PointSystem
 
 
 class PointCalculator:
