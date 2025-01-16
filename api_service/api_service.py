@@ -77,16 +77,19 @@ class ApiService:
         # Extract hourly models
         hourly_data = data["forecast"]["forecastday"][0]["hour"]
 
+        # Get moon phase
+        moon_phase = data["forecast"]["forecastday"][0]["astro"]["moon_phase"]
+
         # Create dataframe using list comprehension
         df = pd.DataFrame([
             {
-                "time": datetime.strptime(hour["time"], "%Y-%m-%d %H:%M").strftime("%l%p"), # parse time into datetime and extract hour
-                # "water_temp":hour["water_temp_f"],
-                # "wave_height": hour["swell_ht_ft"],
+                "date": pd.to_datetime(hour["time"], format='%Y-%m-%d %H:%M').date(),
+                "hour": datetime.strptime(hour["time"], "%Y-%m-%d %H:%M").strftime("%l%p"), # parse time into datetime and extract hour
                 "wind_speed": hour["wind_mph"],
                 "wind_direction": hour["wind_dir"],
                 "air_temp": hour["temp_f"],
                 "weather_condition": hour["condition"]["text"],
+                "moon_phase": moon_phase
             }
             for hour in hourly_data
         ])
