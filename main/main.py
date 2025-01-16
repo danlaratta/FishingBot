@@ -19,14 +19,22 @@ class Main:
         # Endpoints
         weather_endpoint = 'forecast.json'
 
-
         params = {
             'key': self.weather_api_key,
             'q': '08735'
         }
 
         data = api_service.create_hourly_dataframe(weather_endpoint, params=params)
+        # print(data.to_string())
         return data
+
+
+    def get_tide_dataframe(self):
+        # Initialize ApiService
+        api_service = ApiService()
+        tide_endpoint = 'tides'
+        tide_data = api_service.create_tide_dataframe(tide_endpoint, params=None)
+        print(tide_data.to_string())
 
 
     def get_overall_day_percent(self):
@@ -40,8 +48,9 @@ class Main:
 
         # Run calculations
         df_calculated = calculator.process_all()
-        print(df.to_string())
-        # print(df_calculated.to_string())
+        print(df_calculated.to_string())
 
 main = Main()
 main.get_overall_day_percent()
+# main.get_dataframe()
+# main.get_tide_dataframe()

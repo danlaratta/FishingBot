@@ -83,8 +83,9 @@ class ApiService:
         # Create dataframe using list comprehension
         df = pd.DataFrame([
             {
-                "date": pd.to_datetime(hour["time"], format='%Y-%m-%d %H:%M').date(),
-                "hour": datetime.strptime(hour["time"], "%Y-%m-%d %H:%M").strftime("%l%p"), # parse time into datetime and extract hour
+                # "date": pd.to_datetime(hour["time"], format='%Y-%m-%d %H:%M').date(),
+                # "hour": datetime.strptime(hour["time"], "%Y-%m-%d %H:%M").strftime("%l%p"), # parse time into datetime and extract hour
+                "date_time": pd.to_datetime(hour["time"], format='%Y-%m-%d %H:%M'),
                 "wind_speed": hour["wind_mph"],
                 "wind_direction": hour["wind_dir"],
                 "air_temp": hour["temp_f"],
@@ -98,16 +99,14 @@ class ApiService:
 
 
     # Create Dataframe with non-hourly models and return it
-    def create_non_hourly_dataframe(self, weather_endpoint, tide_endpoint, params=None):
-        moon_data = self.get_weather_data(weather_endpoint, params)
-        tide_data = self.get_tide_data(tide_endpoint, None)
+    def create_tide_dataframe(self, endpoint, params=None):
+        tide_data = self.get_tide_data(endpoint, None)
 
-        if not moon_data and not tide_data:
+        if not tide_data:
             print("No tide or moon models available.")
             return None
 
-        df = pd.DataFrame(tide_data["tides"], columns=["date", "time", "type", "height"])
-        moon_phase = moon_data["forecast"]["forecastday"][0]["astro"]["moon_phase"]
-        df["moon_phase"] = moon_phase # add moon phase to dataframe
+        # df = pd.DataFrame(tide_data["tides"], columns=["date", "time", "type", "height"])
+        df = pd.DataFrame(tide_data["tides"], columns=["date", "time", "type"])
         return df
 

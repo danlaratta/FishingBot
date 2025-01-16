@@ -30,9 +30,14 @@ class PointCalculator:
         self.df['moon_phase_points'] = self.df['moon_phase'].apply(self.point_system.moon_phase_points)
 
 
+    def calculate_tide_points(self):
+        pass
+
+
     # create and store calculated points in time_of_year_points column
     def calculate_time_of_year_points(self):
-        self.df['time_of_year_points'] = self.df['date'].apply(self.point_system.time_of_year_points)
+        # self.df['time_of_year_points'] = self.df['date'].apply(self.point_system.time_of_year_points)
+        self.df['time_of_year_points'] = self.df['date_time'].apply(self.point_system.time_of_year_points)
 
 
 
