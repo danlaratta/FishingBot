@@ -1,7 +1,6 @@
 from datetime import datetime
 
 class PointSystem:
-
     # Wind Speed (Moderately Important) – Max 6 points
     @staticmethod
     def wind_speed_points(wind_speed):
@@ -66,10 +65,6 @@ class PointSystem:
             return 1
         return 0
 
-    # 6 pts: 0 - 1 hour
-    # 5 pts: 1 - 2 hours
-    # 4 pts: 2 - 3 hours
-    # 3 pts: 3 - 4 hours
 
     # Hours to Tide Change (Moderately Important) – Max 6 points
     @staticmethod
@@ -110,17 +105,6 @@ class PointSystem:
     def time_of_year_points(date):
         current_year = date.year
 
-        # Define date ranges and points directly in the method
-        # date_ranges = [
-        #     (datetime(current_year, 9, 1).date(), datetime(current_year, 11, 30).date(), 10),  # Fall run
-        #     (datetime(current_year, 5, 1).date(), datetime(current_year, 5, 31).date(), 8),  # Late spring
-        #     (datetime(current_year, 3, 15).date(), datetime(current_year, 4, 30).date(), 6),  # Early spring
-        #     (datetime(current_year, 12, 1).date(), datetime(current_year, 12, 15).date(), 4),  # Early winter
-        #     (datetime(current_year, 12, 16).date(), datetime(current_year, 12, 30).date(), 3),  # Mid-winter
-        #     (datetime(current_year, 6, 1).date(), datetime(current_year, 8, 31).date(), 2),  # Summer
-        #     (datetime(current_year, 1, 1).date(), datetime(current_year, 1, 15).date(), 2),  # Early January
-        #     (datetime(current_year, 1, 16).date(), datetime(current_year, 3, 14).date(), 1),  # Late winter
-        # ]
         date_ranges = [
             (datetime(current_year, 9, 1), datetime(current_year, 11, 30), 10),  # Fall run
             (datetime(current_year, 5, 1), datetime(current_year, 5, 31), 8),  # Late spring

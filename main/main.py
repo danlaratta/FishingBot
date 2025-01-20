@@ -1,56 +1,30 @@
-import os
-from dotenv import load_dotenv
-
-from FishingBot.api_service.api_service import ApiService
-from FishingBot.point_systems.point_calculator import PointCalculator
-from FishingBot.point_systems.point_system import PointSystem
+from FishingBot.automation.automate_task import AutomateTask
+from FishingBot.services.api_service import ApiService
+from FishingBot.services.notification_service import NotificationService
 
 
 class Main:
-    # Load environment variables
-    def __init__(self):
-        load_dotenv()
-        self.weather_api_key = os.getenv('WEATHER_API_KEY')
-
-    def get_dataframe(self):
-        # Initialize ApiService
+    @staticmethod
+    def run():
+        # Initialize services and dependencies
         api_service = ApiService()
-        
-        # Endpoints
-        weather_endpoint = 'forecast.json'
+        notification_service = NotificationService()
+        automate_task = AutomateTask(notification_service)
 
-        params = {
-            'key': self.weather_api_key,
-            'q': '08735'
-        }
+        # Example usage of the ApiService (if needed)
+        try:
+            df = api_service.get_dataframe()
+            if df is not None:
+                print("Weather data successfully processed.")
+        except Exception as e:
+            print(f"Error while fetching weather data: {e}")
 
-        data = api_service.create_hourly_dataframe(weather_endpoint, params=params)
-        # print(data.to_string())
-        return data
-
-
-    def get_tide_dataframe(self):
-        # Initialize ApiService
-        api_service = ApiService()
-        tide_endpoint = 'tides'
-        tide_data = api_service.create_tide_dataframe(tide_endpoint, params=None)
-        print(tide_data.to_string())
+        # Start the automation task
+        automate_task.schedule_task()
+        automate_task.run_task()
 
 
-    def get_overall_day_percent(self):
-        df = self.get_dataframe()
-        if df is None:
-            print('No DataFrame with data')
-            return
-
-        point_system = PointSystem()
-        calculator = PointCalculator(df, point_system)
-
-        # Run calculations
-        df_calculated = calculator.process_all()
-        print(df_calculated.to_string())
-
-main = Main()
-main.get_overall_day_percent()
-# main.get_dataframe()
-# main.get_tide_dataframe()
+# Entry point that runs the project
+if __name__ == "__main__":
+    print("Starting the project...")
+    Main.run()
